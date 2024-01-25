@@ -1,0 +1,94 @@
+num_runs: 3
+experiment: "bci-competition-IV2b"
+data_dir: "/home/ld/Datasets/BCICompetition-IV2b/"
+checkpoint: "./checkpoints/"  #save model weights
+output: ""
+tsne: "no" #save t-sne plot
+diff: "yes"  #use diff loss
+lam: 1        #diff loss lambda
+adv: 0.03     #adversarial loss regularizer
+orth: 0.2     #diff loss regularizer
+
+ntimes: 750 # yuanlai shi 1001
+nchans: 3
+num_subjects: 9
+num_classes: 4
+use_memory: "yes"
+samples: 10 #10 #buffter size validation shuld do in future
+
+e_lr: 0.0001
+e_wd: 0.03  # Shared Encoder weight decay For Adam
+s_step: 3  #100
+
+d_lr: 0.0001
+d_wd: 0.03 # Discriminator weight decay For Adam
+d_step: 3 #100
+
+lr_factor: 3
+lr_min: 1.0e-05
+lr_patience: 10
+mom: 0.9  #For SGD
+
+inputsize: [724, 3, 750]
+model: 'DCN'  # SCN DCN 
+units: 100
+head_units: 28
+latent_dim: 128 # 64 128 256 512
+hidden_dim: [64, 32]
+dropout: 0.25 # 0.25
+
+batch_size: 64
+nepochs: 200 #200
+pc_valid: 0.15
+pc_test: 0.15
+
+num_workers: 1
+device: "cuda:2"
+
+
+
+# output: ""
+# tsne: "no" #save t-sne plot
+# diff: "yes"  #use diff loss
+# lam: 1        #diff loss lambda
+# adv: 0.05     #adversarial loss regularizer
+# orth: 0.1     #diff loss regularizer
+
+
+# ntimes: 750
+# nchans:  3
+# num_subjects: 9
+# num_classes: 2
+# use_memory: "yes"
+# samples: 30
+
+# e_lr: 0.0001
+# e_wd: 0.01
+# s_step: 10  #100
+
+# d_lr: 0.0001
+# d_wd: 0.01
+# d_step: 10 #100
+
+# lr_factor: 3
+# lr_min: 1.0e-05
+# lr_patience: 5
+# mom: 0.9
+
+# inputsize: [724, 3, 750]
+# model: 'EEGNet'  # SCN DCN
+# units: 175
+# head_units: 28
+# latent_dim: 128 # 64 128 256 512
+# hidden_dim: [64, 32]
+# dropout: 0.0  # 0.25
+
+# batch_size: 32
+# nepochs: 100  #200
+# pc_valid: 0.15
+
+# num_workers: 1
+# device: "cuda:2"
+
+
+

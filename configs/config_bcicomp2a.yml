@@ -1,0 +1,94 @@
+num_runs: 3
+experiment: "bci-competition-IV2a"
+data_dir: "/home/ld/Datasets/BCICompetition-IV2a/"
+checkpoint: "./checkpoints/"  #save model weights
+output: ""
+tsne: "no" #save t-sne plot
+diff: "yes"  #use diff loss
+lam: 1        #diff loss lambda
+adv: 0.03     #adversarial loss regularizer
+orth: 0.2     #diff loss regularizer
+
+ntimes: 1000 # yuanlai shi 1001
+nchans: 22
+num_subjects: 9
+num_classes: 4
+use_memory: "yes"
+samples: 5 #10 #buffter size validation shuld do in future
+
+e_lr: 0.00003
+e_wd: 0.03  # Shared Encoder weight decay For Adam
+s_step: 10  #100
+
+d_lr: 0.0002
+d_wd: 0.03 # Discriminator weight decay For Adam
+d_step: 30 #100
+
+lr_factor: 3
+lr_min: 1.0e-05
+lr_patience: 10
+mom: 0.9  #For SGD
+
+inputsize: [576, 22, 1000]
+model: 'EEGNet'  # SCN DCN 
+units: 175
+head_units: 28
+latent_dim: 128 # 64 128 256 512
+hidden_dim: [64, 32]
+dropout: 0.25 # 0.25
+
+batch_size: 32
+nepochs: 500  #200
+pc_valid: 0.15
+pc_test: 0.15
+
+num_workers: 1
+device: "cuda:2"
+
+
+
+ ####### server and colab both EEGNet82 and colab +ablation noM  >>>>>>> check the best result setting ,>>>>if done>>>>>>> 3Runs EEGNet64,16 for best BWT(local results is not very comsuming )
+ ######## 2a 2class all need run again to obtail the forgetting curve
+
+
+
+###2a 2class#######3RUNS ALL ON SERVER AND DONE!!!!
+#####SCN yesM yesD #####
+#### DCN_yesM yesD###### 
+#####EEGNet64,16_yes_yesD##### 
+#####EEGNet 8,2_yesM yesD### 
+###2a 2class#######3RUNS ALL ON SERVER AND DONE!!!!
+#####SCN noM yesD #####
+#### DCN_noM yesD###### 
+#####EEGNet64,16_noM_yesD##### 
+#####EEGNet 8,2_noM yesD### <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<running 
+
+###2a 4class#######3RUNS
+#####SCN yesM yesD #####local done!! 69.5(0.8) 0.0(0.0)
+#### server DCN3runs_yesM yesD#done!! AVG ACC: 72.2377% \pm 0.8598  AVG BWT: -2.24% \pm 0.5893
+#####local EEGNet64,16_yes_yesD #done!! AVG ACC: 65.2932% \pm 2.0504 AVG BWT: -13.92% \pm 3.1164
+#####EEGNet 8,2_yesM yesD### doing <<<<<<<<<<<<<<<<<<now server
+
+
+  ###2a 2class#######3RUNS ALL ON mac AND DONE!!!!
+  #####SCN yesM yesD #####
+  #### DCN_yesM yesD###### 
+  #####EEGNet64,16_yes_yesD##### 
+  #####EEGNet 8,2_yesM yesD### 
+  ###2a 2class#######3RUNS ALL ON mac AND DONE!!!!
+  #####SCN noM yesD #####
+  #### DCN_noM yesD###### 
+  #####EEGNet64,16_noM_yesD##### 
+  #####EEGNet 8,2_noM yesD### 
+
+####future 2b ########
+# SCN
+# DCN
+# EEGNet64,16
+# EEGNEt8,2
+
+###2a 2class#######3RUNS future
+#####SCN yesM noD #####
+#### DCN_yesM noD###### 
+#####EEGNet64,16_yesM_noD##### 
+#####EEGNet 8,2_yesM noD### 
